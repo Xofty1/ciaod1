@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <iostream>
+#include <iomanip>
+#include <string>
 using namespace std;
 
 struct product // товар
@@ -17,16 +19,19 @@ struct order // заказ
 	int day;//день
 	int month;//мес€ц
 	int year;//год
-	char Surname;//фамили€ заказчика
+	string Surname;//фамили€ заказчика
 	int phone_number;//номер телефона
-	char products_list;//список товаров
+	string products_list;//список товаров
 };
 
-void add(product p)
+int addProduct(product products[100], product p, int numberOfProducts)
 	{
-		
+	products[numberOfProducts] = p;
+	numberOfProducts += 1;
+	return numberOfProducts;
+
 	}
-product input_product(/*char name, int code, int quantity, int cost*/product p1)
+product input_product(product p1)
 {
 	cout << "¬ведите название продукта: ";
 	cin >> p1.name;
@@ -42,6 +47,15 @@ product input_product(/*char name, int code, int quantity, int cost*/product p1)
 	return p1;
 }
 
+void print(product p[100], int d)
+{
+	for (int i = 0; i < d; i++)
+	{
+		cout << i + 1 <<')' << '\t' << p[i].name << '\t' << p[i].code << '\t' << p[i].quantity << '\t' << p[i].cost << endl;
+	}
+	
+}
 
+//void addOrder()
 
 #endif
